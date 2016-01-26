@@ -3,7 +3,7 @@
 #Things for you to change or fix are set off with ______UNDERSCORES______
 #Remember they might not have quotes in the correct answer (the seed, for example)
 
-InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.file = "binary.phy", output.path=NULL, output.name = "morpho1", random.seed="________PICK_A_SEED_____", model="________PICK_A_MODEL_FOR_BINARY_TRAITS_WITH_GAMMA_AND_ASCERTAINMENT_BIAS_____", other='--asc-corr=lewis') {
+InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.file = "binary.phy", output.path=NULL, output.name = "morpho1", random.seed=1850, model="BINGAMMA", other='--asc-corr=lewis') {
 	if(!in.place) {
 		if(is.null(input.path)) {
 			fpath <- system.file("extdata", input.file, package="PhyloMethLikelihoodTrees")
@@ -35,7 +35,7 @@ InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.
 	return(list(parsimony.tree=parsimony.tree, ml.tree=ml.tree))
 }
 
-InferDNATreeWithBootstrappingAndPartitions_exercise <- function (in.place=FALSE, input.path=NULL, input.file = "dna.phy", input.partition = "dna12_3.partition.txt", output.path=NULL, output.name = "dna1", random.seed=12345, boot.seed=12345, model="________PICK_A_MODEL_FOR_GTR+GAMMA_____", boot=100) {
+InferDNATreeWithBootstrappingAndPartitions_exercise <- function (in.place=FALSE, input.path=NULL, input.file = "dna.phy", input.partition = "dna12_3.partition.txt", output.path=NULL, output.name = "dna1", random.seed=12345, boot.seed=12345, model="GTRGAMMA", boot=100) {
 	if(!in.place) {
 		if(is.null(input.path)) {
 			fpath <- system.file("extdata", input.file, package="PhyloMethLikelihoodTrees")
@@ -50,7 +50,7 @@ InferDNATreeWithBootstrappingAndPartitions_exercise <- function (in.place=FALSE,
 		setwd(output.path)
 	} 
 
-	raxml.call <- paste("_______THE_CALL_TO_RAxML_WITH_TELLING_IT_TO_DO_FAST_BOOTSTRAPPING_AND_SAVING_THE_OPTIMAL_TREE,_SAVE_BOOTSTRAP_TREES_WITH_BRANCH_LENGTHS________", " -m ", model, " -p ", random.seed, " -x ", boot.seed, " -q ", input.partition, " -# ", boot, " -s ", input.file, " -n ", output.name, sep="")
+	raxml.call <- paste("raxmlHPC -f a -k", " -m ", model, " -p ", random.seed, " -x ", boot.seed, " -q ", input.partition, " -# ", boot, " -s ", input.file, " -n ", output.name, sep="")
 	status <- system(raxml.call)
 	
 	ml.tree <- read.tree(paste("RAxML_bestTree.",output.name, sep=""))
