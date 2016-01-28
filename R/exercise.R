@@ -3,7 +3,7 @@
 #Things for you to change or fix are set off with ______UNDERSCORES______
 #Remember they might not have quotes in the correct answer (the seed, for example)
 
-InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.file = "binary.phy", output.path=NULL, output.name = "morpho1", random.seed=5, model="ASC_BINGAMMA"
+InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.file = "binary.phy", output.path="~/LikelihoodTrees", output.name = "morpho1", random.seed=5, model="ASC_BINGAMMA"
 , other='--asc-corr=lewis') {
 	if(!in.place) {
 		if(is.null(input.path)) {
@@ -34,7 +34,13 @@ InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.
 		}
 	}
 	return(list(parsimony.tree=parsimony.tree, ml.tree=ml.tree))
+	
 }
+
+library(PhyloMethLikelihoodTrees)
+results.1 <- InferMorphologyTree_exercise(output.path="~/LikelihoodTrees") 
+plot.pars <- plot.phylo(results.1$parsimony.tree)
+plot.mle <- plot.phylo(results.1$ml.tree)
 
 InferDNATreeWithBootstrappingAndPartitions_exercise <- function (in.place=FALSE, input.path=NULL, input.file = "dna.phy", input.partition = "dna12_3.partition.txt", output.path=NULL, output.name = "dna1", random.seed=12345, boot.seed=12345, model="GTRGAMMA", boot=100) {
 	if(!in.place) {
@@ -68,3 +74,7 @@ InferDNATreeWithBootstrappingAndPartitions_exercise <- function (in.place=FALSE,
 	}
 	return(list( ml.tree=ml.tree, ml.with.bs.tree=ml.with.bs.tree, bs.trees))
 }
+
+results.2 <- InferDNATreeWithBootstrappingAndPartitions_exercise(output.path="~/LikelihoodTrees")
+library(ape)
+plot.phylo(results.2$ml.with.bs.tree, show.node.label=TRUE)
