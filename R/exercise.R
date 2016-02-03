@@ -3,7 +3,7 @@
 #Things for you to change or fix are set off with ______UNDERSCORES______
 #Remember they might not have quotes in the correct answer (the seed, for example)
 
-InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.file = "binary.phy", output.path=NULL, output.name = "morpho1", random.seed=1850, model="BINGAMMA", other='--asc-corr=lewis') {
+InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.file = "binary.phy", output.path=NULL, output.name = "morpho1", random.seed=1850, model="ASC_BINGAMMA", other='--asc-corr=lewis') {
 	if(!in.place) {
 		if(is.null(input.path)) {
 			fpath <- system.file("extdata", input.file, package="PhyloMethLikelihoodTrees")
