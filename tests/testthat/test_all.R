@@ -1,3 +1,4 @@
+require(testthat)
 test_that("InferMorphologyTree_solution",{	
 	results <- InferMorphologyTree_solution(in.place=TRUE)
 	expect_is(results$parsimony.tree, "phylo")
