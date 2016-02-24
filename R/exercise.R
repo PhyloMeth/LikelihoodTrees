@@ -4,8 +4,7 @@ require(ape)
 require(phangorn)
 require (ips)
 ##################################### Morphology :/ (this face means "I Don't if I did this exercise right")
-#questions (general):
-# Why we have the protein.phy file? We didn't use it in these exercises....
+
 
 InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.file = "binary.phy", output.path=NULL, 
                                          output.name = "morpho1", random.seed=12345, #found this on Exelixis Lab site (or I can use "startingTree.txt" BUT we don't have one.)
