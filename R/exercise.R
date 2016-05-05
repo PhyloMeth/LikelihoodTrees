@@ -1,3 +1,15 @@
+# I can't get RAxML to run on my PC
+# You told me in class that I could just use CIPRES
+# So that is what I have been doing
+
+# Because of that this exercise doesn't work for me
+
+
+
+
+
+
+
 #In this home work, we are going to run RAxML, an external program.
 #You will need to understand some of the arguments to RAxML and what they mean.
 #Things for you to change or fix are set off with ______UNDERSCORES______
